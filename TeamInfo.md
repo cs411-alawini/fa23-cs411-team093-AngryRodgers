@@ -9,9 +9,9 @@
 | Captain     |     Aniketh Chedalla   |
 | Captain     |  aniketh5@illinois.edu |
 | Member1     |     Aakarsh Dhilip     |
-| Member1     | adhilip2@illinois.edu  |
-| Member2     |                        |
-| Member2     |                        |
+| Member1     |  adhilip2@illinois.edu |
+| Member2     |       Kevin Hong       |
+| Member2     |  sukminh2@illinois.edu |
 | Member3     |                        |
 | Member3     |                        |
 

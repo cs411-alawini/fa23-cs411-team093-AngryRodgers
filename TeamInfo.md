@@ -19,10 +19,10 @@
 
 |   Info      |        Description     |
 | ----------- | ---------------------- |
-|  Title      |       ProjectTitle     |
+|  Title      |       Music Recommendation System     |
 | System URL  |      link_to_system    |
 | Video Link  |      link_to_video     |
 
 ## Project Summary
 
-This is a summary of the project!
+We want to build a user-generated music recommendation system. The idea of the application is that users can get song recommendations from our database based on the genres of music that they listen to and are interested in. We want to foster a strong community of individuals that can stay engaged through the song ranking system we propose as a functionality.

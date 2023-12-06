@@ -30,6 +30,7 @@ def login():
         if len(login_info) < 1:
             error = 'Invalid Credentials. Please try again.'
         else:
+            conn.close()
             return redirect(url_for('home_page'))
     
     conn.close()
@@ -56,9 +57,35 @@ def sign_up():
             error = 'Please try again.'
         else:
             user_id += 1
+            conn.close()
             return redirect(url_for('home_page'))
-    return render_template('signup.html')
+    conn.close()
+    return render_template('signup.html', error=error)
 
-@app.route('/home')
+@app.route('/home', methods=["GET", "POST"])
 def home_page():
-    return render_template('home.html')
+    render_template('home.html')
+    conn = get_db_connection()
+    songs = ""
+    if request.method == "POST":
+        keyword = request.form['search_songs']
+        song_info = conn.execute(f'SELECT * FROM Song WHERE SongName LIKE "%{keyword}%"').fetchall()
+        if len(song_info) < 1:
+            songs = 'There is no matching songs.'
+        else:
+            for s in song_info:
+                art = conn.execute(f'SELECT ArtistName FROM Artist WHERE ArtistID = {s[9]}').fetchall()
+                songs += "Song Name: " + s[1] + " | Release Date: " + s[2] + " | Duration: " + str(s[3]) + " | Popularity: " + str(s[4]) + " | Explicit: " + str(s[5]) + " | Mode: " + str(s[6]) + " | Energy: " + str(s[7]) + " | Liveliness: " + str(s[8]) + " | Artist: " + str(art[0][0]) + "\n"
+    
+    # if request.method == "GET":
+    #     keyword = request.form['show_my_playlists']
+    #     song_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistName LIKE "%{keyword}%"').fetchall()
+    #     if len(song_info) < 1:
+    #         songs = 'There is no matching playlists.'
+    #     else:
+    #         for s in song_info:
+    #             art = conn.execute(f'SELECT PlaylistName FROM Playlist WHERE ArtistID = {s[9]}').fetchall()
+    #             songs += "Song Name: " + s[1] + " | Release Date: " + s[2] + " | Duration: " + str(s[3]) + " | Popularity: " + str(s[4]) + " | Explicit: " + str(s[5]) + " | Mode: " + str(s[6]) + " | Energy: " + str(s[7]) + " | Liveliness: " + str(s[8]) + " | Artist: " + str(art[0][0]) + "\n"
+
+    conn.close()
+    return render_template('home.html', songs=songs)

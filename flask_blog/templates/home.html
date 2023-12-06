@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Home Page</h1>
+      <br>
+      <form action="" method="post">
+        <label class="name" id="search-songs" for="search_songs"><b>Search Songs:</b></label>
+        <input type="text" placeholder="Songs " name="search_songs" value="{{
+            request.form.search_songs }}">
+        <input class="btn btn-default" type="submit" value="Search">
+      </form>
+      {% if songs %}
+        <p class="songs"><strong>Songs:</strong> {{ songs }}
+      {% endif %}
+      <!-- <form action="" method="get">
+        <label class="name" id="search-songs" for="search_songs"><b>Search Songs:</b></label>
+        <input type="text" placeholder="Songs " name="search_songs" value="{{
+            request.form.search_songs }}">
+        <input class="btn btn-default" type="submit" value="Search">
+      </form> -->
+
+    </div>
+  </body>
+</html>

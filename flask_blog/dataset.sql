@@ -3787,12 +3787,12 @@ CREATE TABLE `Playlist` (
   `PlaylistId` INT NOT NULL,
   `PlaylistName` varchar(255) default NULL,
   `CreationDate` varchar(255),
-  `SongId` INT NOT NULL,
+  `UserId` INT NOT NULL,
   PRIMARY KEY (`PlaylistId`),
-  FOREIGN KEY (`SongId`) REFERENCES `Song` (`SongId`)
+  FOREIGN KEY (`UserId`) REFERENCES `Song` (`UserId`)
 ) ;
 
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (100,"sit","Dec 22, 2022",130),
   (101,"magna. Praesent interdum","Sep 1, 2023",742),
@@ -3804,7 +3804,7 @@ VALUES
   (107,"felis. Nulla tempor augue","May 8, 2023",256),
   (108,"eu","Oct 4, 2023",1094),
   (109,"turpis egestas.","Jun 27, 2023",705);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (110,"enim diam vel arcu. Curabitur","Dec 22, 2022",567),
   (111,"massa. Integer vitae nibh.","Sep 29, 2023",324),
@@ -3816,7 +3816,7 @@ VALUES
   (117,"tempus,","Jan 2, 2023",328),
   (118,"semper","Dec 25, 2022",777),
   (119,"et, euismod et,","Nov 26, 2022",126);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (120,"sed turpis nec","Dec 27, 2022",319),
   (121,"felis purus ac tellus. Suspendisse","Jan 24, 2023",1012),
@@ -3828,7 +3828,7 @@ VALUES
   (127,"nulla vulputate","Dec 12, 2022",743),
   (128,"urna. Ut tincidunt vehicula risus.","Jul 17, 2023",866),
   (129,"consectetuer ipsum nunc","Dec 4, 2022",914);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (130,"Donec","Apr 7, 2023",461),
   (131,"dolor dolor, tempus non,","Oct 21, 2023",973),
@@ -3840,7 +3840,7 @@ VALUES
   (137,"amet ornare","Jan 27, 2023",164),
   (138,"Vestibulum ut","May 13, 2023",424),
   (139,"et nunc.","Mar 15, 2023",670);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (140,"In at pede. Cras","Nov 20, 2022",1043),
   (141,"sociis natoque penatibus et magnis","Aug 26, 2023",510),
@@ -3852,7 +3852,7 @@ VALUES
   (147,"eu elit.","Sep 19, 2023",687),
   (148,"orci, adipiscing","Jan 23, 2023",396),
   (149,"nisl elementum purus, accumsan","Jul 25, 2023",360);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (150,"a, aliquet vel, vulputate","Dec 4, 2022",288),
   (151,"pharetra ut, pharetra","Nov 21, 2022",708),
@@ -3864,7 +3864,7 @@ VALUES
   (157,"vel nisl. Quisque fringilla","Mar 8, 2023",313),
   (158,"lectus. Cum sociis natoque","Aug 30, 2023",1042),
   (159,"aliquet","Dec 16, 2022",394);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (160,"Integer in magna.","Mar 22, 2023",963),
   (161,"velit. Aliquam nisl. Nulla","Jan 10, 2023",302),
@@ -3876,7 +3876,7 @@ VALUES
   (167,"at, nisi. Cum sociis","Dec 8, 2022",978),
   (168,"metus. Aliquam","Jun 3, 2023",881),
   (169,"dui. Fusce diam nunc, ullamcorper","Apr 24, 2023",246);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (170,"est, vitae sodales nisi","Nov 27, 2022",765),
   (171,"Mauris","Apr 10, 2023",545),
@@ -3888,7 +3888,7 @@ VALUES
   (177,"eget ipsum. Suspendisse","Mar 24, 2023",670),
   (178,"tincidunt","Feb 17, 2023",815),
   (179,"convallis ligula. Donec luctus","Feb 2, 2023",889);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (180,"ut erat.","May 1, 2023",706),
   (181,"lectus. Cum sociis","Feb 12, 2023",487),
@@ -3900,7 +3900,7 @@ VALUES
   (187,"velit. Aliquam nisl. Nulla","Mar 17, 2023",1071),
   (188,"nisi","Jan 27, 2023",872),
   (189,"In mi pede, nonummy ut,","Jul 29, 2023",195);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (190,"orci luctus et ultrices","May 10, 2023",596),
   (191,"consectetuer, cursus et,","Oct 30, 2023",440),
@@ -3912,7 +3912,7 @@ VALUES
   (197,"enim. Suspendisse aliquet,","Nov 15, 2022",109),
   (198,"Fusce aliquet magna a neque.","Aug 23, 2023",402),
   (199,"sed","Sep 11, 2023",260);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (200,"Fusce","Apr 7, 2023",453),
   (201,"gravida","Oct 24, 2023",245),
@@ -3924,7 +3924,7 @@ VALUES
   (207,"consectetuer mauris id","Nov 2, 2022",1006),
   (208,"Morbi quis urna.","Apr 18, 2023",510),
   (209,"Aliquam vulputate ullamcorper magna.","Apr 16, 2023",216);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (210,"et risus.","Apr 23, 2023",141),
   (211,"id,","Apr 17, 2023",413),
@@ -3936,7 +3936,7 @@ VALUES
   (217,"Donec nibh.","Dec 26, 2022",340),
   (218,"mus. Aenean eget magna.","Nov 2, 2022",573),
   (219,"Suspendisse commodo tincidunt nibh. Phasellus","May 30, 2023",602);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (220,"metus eu erat semper","Mar 20, 2023",135),
   (221,"gravida mauris ut mi. Duis","Dec 11, 2022",512),
@@ -3948,7 +3948,7 @@ VALUES
   (227,"auctor non,","Jun 20, 2023",702),
   (228,"dolor. Fusce feugiat.","Feb 27, 2023",170),
   (229,"purus, in","Dec 30, 2022",207);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (230,"Phasellus libero","Apr 22, 2023",256),
   (231,"enim. Sed nulla","Mar 29, 2023",746),
@@ -3960,7 +3960,7 @@ VALUES
   (237,"mauris erat","Nov 9, 2022",156),
   (238,"egestas. Fusce","Aug 8, 2023",621),
   (239,"massa. Quisque porttitor eros","Jun 26, 2023",714);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (240,"ante bibendum","Dec 5, 2022",472),
   (241,"erat volutpat. Nulla facilisis.","Sep 20, 2023",830),
@@ -3972,7 +3972,7 @@ VALUES
   (247,"molestie dapibus","Apr 19, 2023",128),
   (248,"mauris sit","Mar 5, 2023",585),
   (249,"In faucibus. Morbi vehicula.","Jun 3, 2023",230);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (250,"a, auctor non, feugiat","Feb 9, 2023",162),
   (251,"a, auctor non,","Aug 9, 2023",980),
@@ -3984,7 +3984,7 @@ VALUES
   (257,"nec,","Feb 9, 2023",203),
   (258,"Cum sociis natoque","Sep 25, 2023",966),
   (259,"iaculis","Sep 26, 2023",423);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (260,"Donec est.","Jul 8, 2023",108),
   (261,"libero at auctor","Jun 20, 2023",558),
@@ -3996,7 +3996,7 @@ VALUES
   (267,"magna.","Nov 15, 2022",171),
   (268,"Vivamus molestie","Feb 3, 2023",571),
   (269,"magnis dis parturient montes, nascetur","Apr 18, 2023",1003);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (270,"aliquet libero. Integer in","Dec 7, 2022",218),
   (271,"lectus ante dictum mi,","Jul 19, 2023",469),
@@ -4008,7 +4008,7 @@ VALUES
   (277,"orci lobortis augue","Apr 13, 2023",125),
   (278,"accumsan sed, facilisis","May 23, 2023",559),
   (279,"Nam interdum enim","Jun 4, 2023",746);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (280,"ornare sagittis","Apr 26, 2023",355),
   (281,"leo elementum sem,","Sep 28, 2023",708),
@@ -4020,7 +4020,7 @@ VALUES
   (287,"Donec consectetuer","May 18, 2023",667),
   (288,"adipiscing ligula. Aenean gravida","Feb 25, 2023",448),
   (289,"neque. Morbi","Oct 10, 2023",497);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (290,"ut quam vel","Mar 12, 2023",291),
   (291,"magna sed dui.","Feb 15, 2023",774),
@@ -4032,7 +4032,7 @@ VALUES
   (297,"libero est, congue","Oct 10, 2023",1064),
   (298,"nunc. Quisque ornare tortor at","Jan 27, 2023",206),
   (299,"nisi a odio","Jun 29, 2023",591);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (300,"interdum feugiat. Sed nec metus","May 21, 2023",342),
   (301,"malesuada fames ac turpis","Nov 25, 2022",628),
@@ -4044,7 +4044,7 @@ VALUES
   (307,"eu, accumsan sed, facilisis","May 20, 2023",333),
   (308,"sodales nisi","Jul 21, 2023",477),
   (309,"gravida nunc","Jan 20, 2023",219);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (310,"ac, eleifend vitae, erat. Vivamus","Jul 28, 2023",671),
   (311,"justo. Praesent luctus.","Dec 15, 2022",793),
@@ -4056,7 +4056,7 @@ VALUES
   (317,"neque. Morbi quis urna.","Apr 3, 2023",729),
   (318,"Nullam","Mar 9, 2023",137),
   (319,"non, dapibus rutrum,","Nov 11, 2022",802);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (320,"purus. Nullam","Jun 18, 2023",562),
   (321,"vulputate, risus","Sep 17, 2023",236),
@@ -4068,7 +4068,7 @@ VALUES
   (327,"rhoncus. Donec est.","Nov 23, 2022",619),
   (328,"Pellentesque tincidunt tempus risus.","Jun 22, 2023",275),
   (329,"non ante bibendum ullamcorper. Duis","Mar 22, 2023",463);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (330,"eu turpis. Nulla","Dec 11, 2022",117),
   (331,"tellus justo sit","Sep 2, 2023",545),
@@ -4080,7 +4080,7 @@ VALUES
   (337,"ipsum primis in faucibus","Jul 18, 2023",834),
   (338,"ornare","May 10, 2023",168),
   (339,"Ut tincidunt orci quis","Mar 26, 2023",330);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (340,"magna nec quam. Curabitur vel","Apr 14, 2023",110),
   (341,"sapien. Cras dolor","Sep 6, 2023",239),
@@ -4092,7 +4092,7 @@ VALUES
   (347,"eleifend. Cras","Sep 23, 2023",959),
   (348,"aliquam, enim nec tempus","Aug 15, 2023",747),
   (349,"ut aliquam","Sep 13, 2023",314);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (350,"purus mauris a nunc. In","Nov 24, 2022",225),
   (351,"mauris, aliquam eu, accumsan sed,","Feb 10, 2023",965),
@@ -4104,7 +4104,7 @@ VALUES
   (357,"malesuada vel, venenatis","Apr 30, 2023",133),
   (358,"odio, auctor vitae,","Mar 28, 2023",217),
   (359,"et risus. Quisque","Aug 1, 2023",875);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (360,"Quisque ac libero","Feb 21, 2023",750),
   (361,"euismod in, dolor. Fusce","Jan 21, 2023",918),
@@ -4116,7 +4116,7 @@ VALUES
   (367,"gravida molestie","May 24, 2023",883),
   (368,"Nulla dignissim. Maecenas ornare","Sep 1, 2023",628),
   (369,"massa. Suspendisse eleifend. Cras","Sep 21, 2023",727);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (370,"nisi. Aenean","Oct 19, 2023",689),
   (371,"nulla. Cras eu tellus eu","Dec 10, 2022",262),
@@ -4128,7 +4128,7 @@ VALUES
   (377,"Fusce dolor quam,","Mar 23, 2023",835),
   (378,"luctus et","Sep 15, 2023",522),
   (379,"iaculis aliquet","Jun 2, 2023",195);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (380,"commodo ipsum.","Nov 19, 2022",1019),
   (381,"metus. Aliquam","Mar 21, 2023",254),
@@ -4140,7 +4140,7 @@ VALUES
   (387,"ultricies sem magna","Mar 21, 2023",252),
   (388,"pretium","Jul 17, 2023",1051),
   (389,"et pede.","Jun 23, 2023",223);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (390,"vulputate velit eu","Jul 31, 2023",778),
   (391,"Suspendisse sagittis.","Aug 21, 2023",462),
@@ -4152,7 +4152,7 @@ VALUES
   (397,"arcu. Morbi sit","Mar 2, 2023",1007),
   (398,"et, magna. Praesent","Nov 29, 2022",970),
   (399,"magna. Suspendisse","Jun 9, 2023",964);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (400,"parturient montes, nascetur","Dec 6, 2022",882),
   (401,"quis, pede. Suspendisse dui.","Sep 16, 2023",747),
@@ -4164,7 +4164,7 @@ VALUES
   (407,"pretium aliquet,","Feb 26, 2023",460),
   (408,"morbi tristique senectus","Nov 23, 2022",845),
   (409,"sit amet ante.","Sep 28, 2023",138);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (410,"in consequat enim diam","Dec 5, 2022",635),
   (411,"malesuada fames","Jun 30, 2023",1068),
@@ -4176,7 +4176,7 @@ VALUES
   (417,"risus. Nulla eget metus","Oct 27, 2023",988),
   (418,"sapien. Cras","Dec 29, 2022",560),
   (419,"vestibulum","Jul 10, 2023",262);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (420,"Mauris non dui","May 19, 2023",258),
   (421,"ornare. Fusce","Dec 9, 2022",265),
@@ -4188,7 +4188,7 @@ VALUES
   (427,"tellus. Phasellus elit","Nov 25, 2022",520),
   (428,"ut","Dec 19, 2022",598),
   (429,"orci, adipiscing non, luctus sit","Oct 21, 2023",289);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (430,"conubia nostra, per inceptos","Aug 10, 2023",469),
   (431,"augue eu tellus. Phasellus elit","Oct 19, 2023",267),
@@ -4200,7 +4200,7 @@ VALUES
   (437,"augue. Sed molestie. Sed","Aug 27, 2023",869),
   (438,"sem. Pellentesque ut ipsum ac","Feb 18, 2023",609),
   (439,"consequat auctor,","Apr 27, 2023",361);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (440,"non justo. Proin non","Jan 26, 2023",553),
   (441,"Sed eu nibh","Sep 25, 2023",613),
@@ -4212,7 +4212,7 @@ VALUES
   (447,"gravida sit amet, dapibus id,","May 25, 2023",247),
   (448,"adipiscing","Aug 12, 2023",173),
   (449,"elit, pellentesque a, facilisis","Feb 24, 2023",256);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (450,"magna. Ut tincidunt orci","Mar 8, 2023",1048),
   (451,"urna convallis erat, eget tincidunt","May 18, 2023",200),
@@ -4224,7 +4224,7 @@ VALUES
   (457,"Aenean sed pede nec ante","Feb 17, 2023",887),
   (458,"nibh vulputate mauris sagittis","Aug 21, 2023",719),
   (459,"augue. Sed molestie. Sed","May 17, 2023",974);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (460,"ac mi eleifend egestas.","Jul 20, 2023",566),
   (461,"morbi tristique senectus","Aug 7, 2023",127),
@@ -4236,7 +4236,7 @@ VALUES
   (467,"erat volutpat.","Nov 15, 2022",364),
   (468,"felis. Donec tempor, est","May 31, 2023",828),
   (469,"convallis","Apr 10, 2023",819);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (470,"rutrum, justo. Praesent luctus. Curabitur","Mar 27, 2023",756),
   (471,"risus. Morbi metus. Vivamus","Mar 12, 2023",1026),
@@ -4248,7 +4248,7 @@ VALUES
   (477,"Quisque libero lacus, varius et,","May 15, 2023",543),
   (478,"ligula elit, pretium et, rutrum","Oct 9, 2023",651),
   (479,"Etiam laoreet, libero et tristique","Oct 1, 2023",1098);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (480,"semper, dui","Jun 18, 2023",810),
   (481,"eget mollis","Oct 31, 2022",234),
@@ -4260,7 +4260,7 @@ VALUES
   (487,"odio. Etiam ligula tortor,","Oct 16, 2023",477),
   (488,"purus, accumsan interdum libero","Mar 8, 2023",625),
   (489,"in, cursus et,","Oct 1, 2023",419);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (490,"Nullam enim. Sed","May 11, 2023",701),
   (491,"sed sem egestas","Apr 12, 2023",1033),
@@ -4272,7 +4272,7 @@ VALUES
   (497,"imperdiet nec,","Jan 9, 2023",557),
   (498,"Vivamus nibh dolor, nonummy","Dec 5, 2022",451),
   (499,"ligula tortor, dictum eu, placerat","Jan 18, 2023",1055);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (500,"nunc sed","Mar 14, 2023",275),
   (501,"sodales elit","Sep 4, 2023",159),
@@ -4284,7 +4284,7 @@ VALUES
   (507,"Ut tincidunt orci quis","Apr 8, 2023",906),
   (508,"Aliquam","Jul 19, 2023",1078),
   (509,"interdum. Nunc","Aug 5, 2023",737);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (510,"vulputate, lacus. Cras interdum.","Apr 15, 2023",1077),
   (511,"a felis ullamcorper viverra. Maecenas","Apr 19, 2023",733),
@@ -4296,7 +4296,7 @@ VALUES
   (517,"sed consequat","Aug 30, 2023",503),
   (518,"nec,","Mar 22, 2023",840),
   (519,"interdum feugiat. Sed","Apr 18, 2023",102);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (520,"massa","Oct 22, 2023",587),
   (521,"non, luctus sit amet, faucibus","Jan 20, 2023",179),
@@ -4308,7 +4308,7 @@ VALUES
   (527,"egestas a,","Jan 24, 2023",844),
   (528,"Ut semper","Jun 21, 2023",1021),
   (529,"Suspendisse commodo","Jul 22, 2023",857);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (530,"ipsum. Phasellus","Apr 12, 2023",455),
   (531,"Sed eget lacus.","Mar 12, 2023",995),
@@ -4320,7 +4320,7 @@ VALUES
   (537,"placerat velit.","Aug 24, 2023",571),
   (538,"vestibulum,","May 23, 2023",136),
   (539,"ac","Feb 21, 2023",788);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (540,"nisi. Aenean","Jul 3, 2023",273),
   (541,"nec ipsum.","Dec 29, 2022",818),
@@ -4332,7 +4332,7 @@ VALUES
   (547,"eleifend. Cras","Jul 15, 2023",567),
   (548,"mi lacinia mattis.","Nov 3, 2022",312),
   (549,"ullamcorper, velit in","Feb 11, 2023",771);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (550,"ornare sagittis felis. Donec tempor,","Feb 23, 2023",159),
   (551,"placerat. Cras dictum ultricies","Oct 27, 2023",566),
@@ -4344,7 +4344,7 @@ VALUES
   (557,"malesuada vel, convallis in, cursus","Jul 31, 2023",487),
   (558,"aliquet","Feb 22, 2023",574),
   (559,"sodales at, velit. Pellentesque","Aug 21, 2023",1027);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (560,"non justo. Proin non","Nov 24, 2022",757),
   (561,"Quisque varius. Nam","Sep 14, 2023",380),
@@ -4356,7 +4356,7 @@ VALUES
   (567,"blandit mattis.","Jul 2, 2023",842),
   (568,"Duis at lacus.","Aug 12, 2023",594),
   (569,"sem molestie","Oct 20, 2023",960);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (570,"malesuada augue","Feb 23, 2023",186),
   (571,"et","Dec 19, 2022",551),
@@ -4368,7 +4368,7 @@ VALUES
   (577,"et, euismod et, commodo at,","Jan 28, 2023",925),
   (578,"mattis. Cras","Mar 25, 2023",694),
   (579,"semper, dui lectus","Jul 16, 2023",259);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (580,"placerat eget, venenatis a,","Aug 30, 2023",973),
   (581,"risus. Nulla eget","Feb 28, 2023",417),
@@ -4380,7 +4380,7 @@ VALUES
   (587,"ullamcorper magna.","Jul 20, 2023",545),
   (588,"ipsum. Donec sollicitudin adipiscing","Apr 18, 2023",801),
   (589,"metus. Aliquam erat","Mar 19, 2023",608);
-INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`SongId`)
+INSERT INTO `Playlist` (`PlaylistId`,`PlaylistName`,`CreationDate`,`UserId`)
 VALUES
   (590,"penatibus et magnis dis","Sep 23, 2023",260),
   (591,"sem molestie","Apr 10, 2023",557),
@@ -4441,3 +4441,1213 @@ VALUES
   ("Progressive rock",7,2,9,8),
   ("House music",7,1,4,2),
   ("Trance music",7,9,3,7);
+
+DROP TABLE IF EXISTS `Playlist_Song`;
+
+CREATE TABLE `Playlist_Song` (
+  `PlaylistId` INT NOT NULL,
+  `SongId` INT NOT NULL,
+  FOREIGN KEY(`PlaylistId`) REFERENCES `Playlist`(`PlaylistId`)
+  FOREIGN KEY(`SongId`) REFERENCES `Song`(`SongId`)
+);
+
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (322,357),
+  (377,939),
+  (448,1069),
+  (523,462),
+  (452,491),
+  (236,534),
+  (416,702),
+  (288,249),
+  (146,689),
+  (347,341);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (245,108),
+  (570,941),
+  (574,469),
+  (444,866),
+  (277,336),
+  (356,802),
+  (376,183),
+  (282,692),
+  (288,508),
+  (590,554);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (501,768),
+  (389,547),
+  (298,135),
+  (304,683),
+  (122,860),
+  (464,1041),
+  (493,528),
+  (420,919),
+  (246,472),
+  (313,852);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (244,759),
+  (485,882),
+  (109,415),
+  (493,306),
+  (483,122),
+  (364,270),
+  (504,1098),
+  (431,513),
+  (322,1079),
+  (287,940);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (298,627),
+  (162,415),
+  (214,1085),
+  (250,185),
+  (293,302),
+  (378,974),
+  (214,996),
+  (315,772),
+  (419,397),
+  (133,997);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (278,369),
+  (217,328),
+  (174,928),
+  (444,426),
+  (422,1054),
+  (544,593),
+  (173,282),
+  (444,277),
+  (508,1049),
+  (585,131);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (213,907),
+  (171,828),
+  (187,920),
+  (135,935),
+  (440,225),
+  (319,657),
+  (371,247),
+  (363,801),
+  (576,848),
+  (265,258);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (338,742),
+  (406,622),
+  (374,817),
+  (415,671),
+  (365,857),
+  (210,955),
+  (583,411),
+  (171,732),
+  (198,227),
+  (412,472);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (395,281),
+  (520,674),
+  (347,817),
+  (178,776),
+  (393,206),
+  (251,707),
+  (432,769),
+  (156,678),
+  (450,573),
+  (117,437);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (506,346),
+  (433,691),
+  (438,822),
+  (364,245),
+  (583,903),
+  (209,517),
+  (317,264),
+  (474,368),
+  (439,890),
+  (477,993);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (431,215),
+  (178,323),
+  (553,637),
+  (453,267),
+  (222,951),
+  (536,482),
+  (598,916),
+  (217,212),
+  (252,704),
+  (456,628);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (447,681),
+  (249,138),
+  (154,372),
+  (166,128),
+  (436,398),
+  (138,377),
+  (364,967),
+  (210,946),
+  (168,366),
+  (485,1053);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (518,583),
+  (143,829),
+  (451,700),
+  (322,682),
+  (344,378),
+  (148,189),
+  (491,743),
+  (392,353),
+  (383,856),
+  (190,664);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (531,270),
+  (574,565),
+  (108,931),
+  (525,182),
+  (255,552),
+  (491,616),
+  (483,140),
+  (175,158),
+  (321,981),
+  (414,418);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (248,322),
+  (275,918),
+  (360,349),
+  (561,307),
+  (155,1047),
+  (555,675),
+  (563,1011),
+  (513,625),
+  (560,909),
+  (157,714);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (122,114),
+  (546,503),
+  (162,1038),
+  (438,105),
+  (562,1009),
+  (201,928),
+  (363,715),
+  (162,1034),
+  (355,810),
+  (356,951);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (375,218),
+  (534,197),
+  (576,1074),
+  (145,861),
+  (575,280),
+  (588,849),
+  (410,132),
+  (517,634),
+  (344,279),
+  (476,651);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (405,547),
+  (587,455),
+  (572,1030),
+  (541,131),
+  (124,834),
+  (375,269),
+  (361,464),
+  (417,1076),
+  (107,127),
+  (563,207);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (522,891),
+  (473,445),
+  (565,492),
+  (272,186),
+  (164,231),
+  (462,610),
+  (555,716),
+  (302,818),
+  (182,109),
+  (585,908);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (346,455),
+  (279,808),
+  (545,424),
+  (169,404),
+  (412,218),
+  (473,134),
+  (489,928),
+  (165,219),
+  (169,984),
+  (379,569);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (404,730),
+  (552,488),
+  (218,827),
+  (512,753),
+  (468,382),
+  (437,108),
+  (234,778),
+  (244,276),
+  (362,305),
+  (543,635);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (487,189),
+  (376,522),
+  (518,774),
+  (429,586),
+  (532,357),
+  (377,369),
+  (323,171),
+  (419,743),
+  (304,610),
+  (375,741);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (271,1057),
+  (323,612),
+  (252,259),
+  (561,336),
+  (586,325),
+  (286,536),
+  (253,739),
+  (324,942),
+  (466,311),
+  (337,468);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (588,853),
+  (205,931),
+  (557,1097),
+  (242,1077),
+  (414,786),
+  (505,464),
+  (384,430),
+  (115,290),
+  (598,238),
+  (218,214);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (168,751),
+  (576,857),
+  (277,927),
+  (304,194),
+  (431,401),
+  (535,307),
+  (339,104),
+  (146,481),
+  (477,585),
+  (479,159);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (566,452),
+  (283,548),
+  (194,1073),
+  (501,799),
+  (126,761),
+  (486,574),
+  (523,700),
+  (394,563),
+  (377,804),
+  (291,346);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (255,617),
+  (459,559),
+  (253,412),
+  (531,1070),
+  (127,134),
+  (414,315),
+  (184,519),
+  (391,986),
+  (542,107),
+  (188,292);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (351,502),
+  (469,189),
+  (592,494),
+  (368,652),
+  (487,353),
+  (260,818),
+  (358,879),
+  (189,477),
+  (169,166),
+  (312,681);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (560,997),
+  (394,400),
+  (267,235),
+  (593,913),
+  (550,128),
+  (230,705),
+  (196,440),
+  (242,1084),
+  (496,561),
+  (522,186);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (200,409),
+  (118,1000),
+  (549,872),
+  (440,656),
+  (245,832),
+  (470,102),
+  (420,552),
+  (197,931),
+  (547,570),
+  (580,149);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (112,749),
+  (324,212),
+  (459,851),
+  (121,466),
+  (595,148),
+  (142,407),
+  (403,296),
+  (299,958),
+  (494,136),
+  (514,570);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (202,278),
+  (598,132),
+  (247,802),
+  (370,610),
+  (287,1046),
+  (389,446),
+  (330,752),
+  (337,194),
+  (450,162),
+  (554,765);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (197,834),
+  (341,573),
+  (495,547),
+  (469,172),
+  (137,235),
+  (563,982),
+  (477,1001),
+  (118,312),
+  (199,266),
+  (306,132);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (513,121),
+  (408,514),
+  (342,423),
+  (475,879),
+  (562,1012),
+  (159,140),
+  (140,240),
+  (467,956),
+  (447,132),
+  (577,1073);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (472,883),
+  (442,639),
+  (592,212),
+  (294,608),
+  (251,1061),
+  (243,853),
+  (449,692),
+  (392,425),
+  (333,722),
+  (204,943);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (588,300),
+  (330,426),
+  (156,336),
+  (333,877),
+  (139,150),
+  (261,958),
+  (351,382),
+  (375,787),
+  (510,802),
+  (303,913);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (569,863),
+  (375,363),
+  (559,103),
+  (230,882),
+  (480,538),
+  (536,1055),
+  (433,502),
+  (460,257),
+  (458,974),
+  (175,542);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (257,1076),
+  (463,702),
+  (238,716),
+  (146,649),
+  (308,714),
+  (598,371),
+  (190,486),
+  (281,958),
+  (440,811),
+  (202,777);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (128,637),
+  (444,135),
+  (489,934),
+  (327,681),
+  (205,256),
+  (592,1041),
+  (140,200),
+  (449,392),
+  (490,150),
+  (252,454);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (313,123),
+  (110,859),
+  (338,628),
+  (588,632),
+  (386,695),
+  (459,180),
+  (300,209),
+  (564,138),
+  (486,317),
+  (180,306);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (532,1090),
+  (225,261),
+  (406,334),
+  (110,388),
+  (214,196),
+  (197,859),
+  (455,302),
+  (213,186),
+  (554,384),
+  (186,476);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (410,541),
+  (488,395),
+  (206,763),
+  (491,699),
+  (260,954),
+  (227,669),
+  (545,290),
+  (539,1063),
+  (162,400),
+  (128,658);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (237,990),
+  (322,844),
+  (534,828),
+  (144,233),
+  (102,975),
+  (149,491),
+  (400,1024),
+  (342,117),
+  (588,118),
+  (263,379);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (421,182),
+  (538,214),
+  (242,855),
+  (333,393),
+  (307,118),
+  (584,773),
+  (359,945),
+  (470,200),
+  (140,582),
+  (243,273);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (113,525),
+  (214,501),
+  (269,764),
+  (530,122),
+  (220,972),
+  (220,562),
+  (561,348),
+  (255,1046),
+  (223,514),
+  (483,782);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (331,894),
+  (269,295),
+  (324,508),
+  (562,433),
+  (236,551),
+  (407,396),
+  (527,466),
+  (403,764),
+  (226,351),
+  (197,669);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (437,298),
+  (476,306),
+  (546,323),
+  (236,146),
+  (258,733),
+  (340,861),
+  (538,1094),
+  (145,358),
+  (290,412),
+  (203,319);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (148,443),
+  (415,601),
+  (354,462),
+  (192,385),
+  (341,205),
+  (216,118),
+  (327,607),
+  (309,172),
+  (135,771),
+  (295,716);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (287,373),
+  (208,404),
+  (152,567),
+  (118,1063),
+  (572,539),
+  (520,1084),
+  (382,1036),
+  (181,496),
+  (374,973),
+  (532,1080);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (524,184),
+  (566,613),
+  (406,126),
+  (260,495),
+  (209,899),
+  (236,1013),
+  (597,816),
+  (471,1055),
+  (142,427),
+  (159,717);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (186,1084),
+  (391,811),
+  (310,324),
+  (304,659),
+  (327,343),
+  (201,407),
+  (325,233),
+  (414,129),
+  (113,901),
+  (447,705);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (403,1014),
+  (424,1061),
+  (595,277),
+  (121,505),
+  (263,432),
+  (204,988),
+  (420,601),
+  (276,841),
+  (413,1063),
+  (446,503);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (593,457),
+  (354,230),
+  (215,829),
+  (533,165),
+  (170,139),
+  (173,479),
+  (375,271),
+  (191,530),
+  (549,222),
+  (411,179);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (487,615),
+  (132,1072),
+  (422,674),
+  (555,700),
+  (556,509),
+  (167,463),
+  (372,417),
+  (344,439),
+  (494,151),
+  (268,948);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (349,693),
+  (254,240),
+  (280,1062),
+  (320,806),
+  (188,484),
+  (526,858),
+  (561,244),
+  (158,196),
+  (459,653),
+  (147,969);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (584,499),
+  (599,646),
+  (290,994),
+  (343,828),
+  (209,521),
+  (208,172),
+  (431,433),
+  (362,354),
+  (573,698),
+  (327,198);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (383,1033),
+  (296,439),
+  (495,775),
+  (166,625),
+  (461,260),
+  (484,973),
+  (504,1041),
+  (375,254),
+  (374,519),
+  (302,171);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (380,394),
+  (197,982),
+  (238,922),
+  (360,611),
+  (197,508),
+  (189,342),
+  (269,745),
+  (351,927),
+  (255,575),
+  (472,215);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (259,706),
+  (521,158),
+  (246,158),
+  (101,236),
+  (383,612),
+  (257,224),
+  (572,274),
+  (445,295),
+  (544,614),
+  (267,1012);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (521,136),
+  (492,458),
+  (229,256),
+  (318,926),
+  (220,776),
+  (210,574),
+  (546,1069),
+  (171,1026),
+  (146,395),
+  (488,941);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (573,222),
+  (478,644),
+  (400,976),
+  (403,176),
+  (262,619),
+  (178,556),
+  (592,589),
+  (432,171),
+  (236,436),
+  (443,148);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (199,346),
+  (326,1059),
+  (471,163),
+  (247,423),
+  (398,959),
+  (226,267),
+  (269,688),
+  (122,834),
+  (440,116),
+  (404,484);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (245,154),
+  (514,1018),
+  (447,237),
+  (199,576),
+  (593,257),
+  (384,629),
+  (357,1058),
+  (400,439),
+  (199,770),
+  (234,1015);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (579,241),
+  (173,694),
+  (402,409),
+  (158,427),
+  (421,1072),
+  (290,1062),
+  (410,647),
+  (384,956),
+  (161,359),
+  (305,778);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (264,144),
+  (407,411),
+  (458,618),
+  (141,321),
+  (533,608),
+  (154,780),
+  (187,322),
+  (548,560),
+  (246,830),
+  (247,887);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (165,966),
+  (129,480),
+  (539,337),
+  (311,534),
+  (148,1030),
+  (154,191),
+  (101,870),
+  (458,304),
+  (180,799),
+  (309,860);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (341,242),
+  (450,265),
+  (426,686),
+  (329,1018),
+  (240,527),
+  (111,1059),
+  (315,873),
+  (130,579),
+  (147,170),
+  (335,464);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (124,150),
+  (402,173),
+  (314,898),
+  (219,122),
+  (287,740),
+  (143,940),
+  (433,373),
+  (306,785),
+  (540,219),
+  (546,743);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (187,611),
+  (417,1060),
+  (403,582),
+  (239,1000),
+  (488,247),
+  (590,327),
+  (532,336),
+  (511,857),
+  (313,643),
+  (576,865);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (451,464),
+  (184,974),
+  (235,471),
+  (574,650),
+  (331,398),
+  (565,614),
+  (180,126),
+  (553,781),
+  (250,563),
+  (177,193);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (156,723),
+  (594,666),
+  (510,753),
+  (488,778),
+  (583,1014),
+  (233,461),
+  (471,365),
+  (141,285),
+  (141,454),
+  (256,841);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (219,819),
+  (206,741),
+  (538,520),
+  (188,929),
+  (285,1009),
+  (238,410),
+  (532,902),
+  (580,744),
+  (203,988),
+  (486,879);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (228,248),
+  (246,224),
+  (420,827),
+  (459,1086),
+  (209,554),
+  (411,445),
+  (282,673),
+  (532,515),
+  (125,415),
+  (125,261);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (138,724),
+  (237,292),
+  (412,996),
+  (581,697),
+  (585,104),
+  (169,692),
+  (537,220),
+  (125,233),
+  (150,913),
+  (117,868);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (558,1002),
+  (494,208),
+  (495,400),
+  (304,199),
+  (542,965),
+  (380,288),
+  (516,914),
+  (546,398),
+  (235,878),
+  (469,596);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (146,401),
+  (191,1060),
+  (301,654),
+  (172,1020),
+  (294,339),
+  (572,654),
+  (465,652),
+  (223,1083),
+  (550,455),
+  (215,950);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (109,1047),
+  (377,576),
+  (401,678),
+  (534,245),
+  (514,869),
+  (101,1036),
+  (479,645),
+  (456,598),
+  (466,829),
+  (593,736);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (341,700),
+  (341,657),
+  (304,770),
+  (241,786),
+  (423,189),
+  (497,631),
+  (508,636),
+  (260,992),
+  (126,913),
+  (363,924);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (481,748),
+  (268,189),
+  (281,859),
+  (338,132),
+  (477,902),
+  (105,967),
+  (196,374),
+  (405,727),
+  (486,926),
+  (568,1081);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (331,762),
+  (225,825),
+  (167,503),
+  (444,685),
+  (387,411),
+  (242,770),
+  (161,585),
+  (328,906),
+  (499,138),
+  (244,460);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (190,498),
+  (284,730),
+  (534,553),
+  (225,753),
+  (143,483),
+  (227,1091),
+  (452,208),
+  (535,1012),
+  (598,140),
+  (212,404);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (179,584),
+  (517,570),
+  (546,1087),
+  (266,557),
+  (444,938),
+  (237,1000),
+  (498,1005),
+  (355,142),
+  (392,330),
+  (426,276);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (413,690),
+  (271,390),
+  (493,840),
+  (243,379),
+  (353,940),
+  (291,425),
+  (543,826),
+  (240,777),
+  (329,388),
+  (531,173);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (286,710),
+  (553,528),
+  (514,291),
+  (253,240),
+  (176,249),
+  (228,821),
+  (309,575),
+  (329,640),
+  (177,610),
+  (132,234);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (388,1074),
+  (457,1018),
+  (572,411),
+  (248,918),
+  (167,575),
+  (584,549),
+  (527,163),
+  (257,797),
+  (504,697),
+  (531,1092);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (520,125),
+  (245,1073),
+  (131,119),
+  (477,116),
+  (296,606),
+  (295,1052),
+  (481,570),
+  (124,527),
+  (137,326),
+  (311,301);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (421,803),
+  (339,168),
+  (441,136),
+  (344,478),
+  (133,404),
+  (253,260),
+  (242,333),
+  (122,720),
+  (308,1015),
+  (487,706);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (377,324),
+  (221,740),
+  (584,206),
+  (301,350),
+  (146,110),
+  (591,764),
+  (261,419),
+  (351,1082),
+  (255,821),
+  (194,555);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (220,509),
+  (133,312),
+  (289,1084),
+  (312,851),
+  (414,478),
+  (156,233),
+  (137,465),
+  (545,502),
+  (533,199),
+  (596,208);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (113,660),
+  (273,793),
+  (346,186),
+  (135,198),
+  (217,516),
+  (518,103),
+  (258,1038),
+  (413,1030),
+  (197,1093),
+  (363,910);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (372,935),
+  (131,587),
+  (550,286),
+  (273,594),
+  (568,101),
+  (596,798),
+  (564,121),
+  (570,677),
+  (375,228),
+  (481,490);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (456,527),
+  (191,613),
+  (559,938),
+  (516,382),
+  (458,368),
+  (240,435),
+  (121,287),
+  (598,491),
+  (162,1012),
+  (228,649);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (272,625),
+  (358,452),
+  (417,1038),
+  (315,161),
+  (112,1025),
+  (164,398),
+  (278,659),
+  (371,476),
+  (273,1034),
+  (241,451);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (162,692),
+  (552,167),
+  (487,846),
+  (278,232),
+  (597,836),
+  (452,904),
+  (409,722),
+  (230,818),
+  (542,989),
+  (287,842);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (141,1012),
+  (203,362),
+  (242,377),
+  (559,1022),
+  (577,1081),
+  (586,248),
+  (346,329),
+  (529,1045),
+  (594,626),
+  (517,425);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (426,481),
+  (339,142),
+  (549,335),
+  (290,493),
+  (290,1094),
+  (455,680),
+  (406,971),
+  (257,344),
+  (172,610),
+  (152,457);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (551,899),
+  (124,939),
+  (576,521),
+  (399,316),
+  (331,934),
+  (396,481),
+  (501,718),
+  (113,273),
+  (235,366),
+  (360,1084);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (537,757),
+  (553,363),
+  (438,269),
+  (399,424),
+  (366,484),
+  (160,1055),
+  (539,790),
+  (194,736),
+  (563,282),
+  (147,642);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (375,314),
+  (435,235),
+  (137,399),
+  (304,1056),
+  (411,305),
+  (460,319),
+  (492,843),
+  (334,453),
+  (112,155),
+  (129,718);
+INSERT INTO `Playlist_Song` (`PlaylistId`,`SongId`)
+VALUES
+  (161,504),
+  (235,571),
+  (293,505),
+  (372,582),
+  (451,561),
+  (501,1078),
+  (596,730),
+  (364,539),
+  (598,669),
+  (406,303);

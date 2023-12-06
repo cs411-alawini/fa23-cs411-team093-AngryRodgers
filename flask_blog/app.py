@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, render_template, redirect, url_for, request
 
 user_id = 1100
+playlistid = 600
 
 def get_db_connection():
     conn = sqlite3.connect('database1.db')
@@ -89,3 +90,48 @@ def home_page():
 
     conn.close()
     return render_template('home.html', songs=songs)
+
+@app.route('/playlist', methods=["GET", "POST"])
+def create_playlist():
+    render_template('playlist.html')
+    
+    global user_id, playlistid
+    conn = get_db_connection()
+    error = None
+    if request.method == "POST":
+        playlistname = request.form['playlistname']
+
+        playlist_info = conn.execute(f'INSERT INTO Playlist ("PlaylistId", "PlaylistName", "CreationDate", "UserId") VALUES ({playlistid}, "{playlistname}", "Dec 6, 2023", {user_id})')
+        verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistId = {playlistid} AND PlaylistName = "{playlistname}"').fetchall()
+
+        if len(verification_info) < 1:
+            error = 'Failed to create playlist'
+        else:
+            playlistid += 1
+            conn.close()
+            return redirect(url_for('add_songs', playlist_id = playlistid))
+    conn.close()
+    return render_template('playlist.html', error=error)
+
+@app.route('/playlist/<playlist_id>', methods=["GET", "POST"])
+def add_songs(playlist_id):
+    render_template('specific_playlist.html')
+    conn = get_db_connection()
+    error = None
+    if request.method == "POST":
+        songname = request.form['searchaddsongs']
+        artistname = request.form['search_artist']
+
+        song_info = conn.execute(f'SELECT * FROM Song WHERE SongName = "{songname}" AND ArtistName = "{artistname}"').fetchall()
+
+        if len(song_info) < 1:
+            error = 'There is no matching song'
+        else:
+            playlist_song_info = conn.execute(f'INSERT INTO Playlist_Song ("PlaylistId", "SongId") VALUES ({playlist_id}, {song_info[0]})')
+            verification_info = conn.execute(f'SELECT * FROM Playlist_Song WHERE SongId = {song_info[0]}').fetchall()
+            if len(verification_info) < 1:
+                error = 'Failed to add song into playlist'
+            conn.close()
+            return redirect(url_for('home_page'))
+    conn.close()
+    return render_template('specific_playlist.html', error=error)

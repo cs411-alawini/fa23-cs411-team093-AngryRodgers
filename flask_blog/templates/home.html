@@ -17,13 +17,9 @@
       {% if songs %}
         <p class="songs"><strong>Songs:</strong> {{ songs }}
       {% endif %}
-      <!-- <form action="" method="get">
-        <label class="name" id="search-songs" for="search_songs"><b>Search Songs:</b></label>
-        <input type="text" placeholder="Songs " name="search_songs" value="{{
-            request.form.search_songs }}">
-        <input class="btn btn-default" type="submit" value="Search">
-      </form> -->
-
+      <form method="GET" enctype="multipart/form-data" action=“/playlist”>
+        <button type="submit" class="btn btn-primary">Create Playlist</button>
+      </form>
     </div>
   </body>
 </html>

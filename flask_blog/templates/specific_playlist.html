@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Add Songs to Playlist Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add Songs to this Playlist</h1>
+      <br>
+      <form action="" method="post">
+        <!-- <label class="name" id="search-songs" for="search_addsongs"><b>Search Song:</b></label> -->
+        <input type="text" placeholder="Song Name" name="searchaddsongs" value="{{
+            request.form.searchaddsongs }}">
+        <!-- <label class="name" id="search-artist" for="search_artist"><b>Search Artist:</b></label> -->
+        <input type="text" placeholder="Artist Name" name="search_artist" value="{{
+            request.form.search_artist }}">
+        <input class="btn btn-default" type="submit" value="Add">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>

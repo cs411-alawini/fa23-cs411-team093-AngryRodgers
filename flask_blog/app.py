@@ -91,15 +91,14 @@ def home_page():
     conn.close()
     return render_template('home.html', songs=songs)
 
-@app.route('/playlist', methods=["GET", "POST"])
+@app.route('/createplaylist', methods=["GET", "POST"])
 def create_playlist():
-    render_template('playlist.html')
-    
     global user_id, playlistid
     conn = get_db_connection()
     error = None
+
     if request.method == "POST":
-        playlistname = request.form['playlistname']
+        playlistname = request.form['createplaylistname']
 
         playlist_info = conn.execute(f'INSERT INTO Playlist ("PlaylistId", "PlaylistName", "CreationDate", "UserId") VALUES ({playlistid}, "{playlistname}", "Dec 6, 2023", {user_id})')
         verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistId = {playlistid} AND PlaylistName = "{playlistname}"').fetchall()
@@ -109,9 +108,30 @@ def create_playlist():
         else:
             playlistid += 1
             conn.close()
-            return redirect(url_for('add_songs', playlist_id = playlistid))
+            return redirect(url_for('add_songs', playlist_id=playlistid))
+
     conn.close()
     return render_template('playlist.html', error=error)
+
+@app.route('/deleteplaylist', methods=["GET", "POST"])
+def delete_playlist():
+    render_template('delete_playlist.html')
+    
+    conn = get_db_connection()
+    error = None
+    if request.method == "POST":
+        playlistname = request.form['deleteplaylistname']
+
+        playlist_info = conn.execute(f'DELETE FROM Playlist WHERE PlaylistName = "{playlistname}"')
+        verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistName = "{playlistname}"').fetchall()
+
+        if len(verification_info) != 0:
+            error = 'Failed to delete playlist'
+        else:
+            conn.close()
+            return redirect(url_for('home_page'))
+    conn.close()
+    return render_template('delete_playlist.html', error=error)
 
 @app.route('/playlist/<playlist_id>', methods=["GET", "POST"])
 def add_songs(playlist_id):
@@ -122,13 +142,14 @@ def add_songs(playlist_id):
         songname = request.form['searchaddsongs']
         artistname = request.form['search_artist']
 
-        song_info = conn.execute(f'SELECT * FROM Song WHERE SongName = "{songname}" AND ArtistName = "{artistname}"').fetchall()
+        artistnamedata = conn.execute(f'SELECT ArtistId FROM Artist WHERE ArtistName = "{artistname}"').fetchall()
+        song_info = conn.execute(f'SELECT * FROM Song WHERE SongName = "{songname}" AND ArtistId = {artistnamedata[0][0]}').fetchall()
 
         if len(song_info) < 1:
             error = 'There is no matching song'
         else:
-            playlist_song_info = conn.execute(f'INSERT INTO Playlist_Song ("PlaylistId", "SongId") VALUES ({playlist_id}, {song_info[0]})')
-            verification_info = conn.execute(f'SELECT * FROM Playlist_Song WHERE SongId = {song_info[0]}').fetchall()
+            playlist_song_info = conn.execute(f'INSERT INTO Playlist_Song ("PlaylistId", "SongId") VALUES ({playlist_id}, {song_info[0][0]})')
+            verification_info = conn.execute(f'SELECT * FROM Playlist_Song WHERE SongId = {song_info[0][0]}').fetchall()
             if len(verification_info) < 1:
                 error = 'Failed to add song into playlist'
             conn.close()

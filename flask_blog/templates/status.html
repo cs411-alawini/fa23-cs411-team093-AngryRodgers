@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Status Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Status</h1>
+      <br>
+      {% if status %}
+        <p class="error"><strong>My Status:</strong> {{ status }}
+      {% endif %}
+      <form method="GET" enctype="multipart/form-data" action="/home">
+        <button type="submit" class="btn btn-primary">Back to Home</button>
+      </form>
+    </div>
+  </body>
+</html>

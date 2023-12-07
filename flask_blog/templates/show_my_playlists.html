@@ -16,6 +16,9 @@
       {% if playlists %}
         <p class="error"><strong>My Playlists:</strong> {{ playlists }}
       {% endif %}
+      <form method="GET" enctype="multipart/form-data" action="/home">
+        <button type="submit" class="btn btn-primary">Back to Home</button>
+      </form>
     </div>
   </body>
 </html>

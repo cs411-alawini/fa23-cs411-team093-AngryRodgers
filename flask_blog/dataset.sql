@@ -9,7 +9,7 @@ CREATE TABLE `User` (
   `Age` INT default NULL,
   `Email` varchar(255) default NULL,
   `PhoneNumber` varchar(100) default NULL,
-  `Status`  varchar(255) default NULL,
+  `Status`  varchar(255) default 'Non-Active',
   PRIMARY KEY (`UserId`)
 ) ;
 
@@ -5702,14 +5702,26 @@ VALUES
 
 -- DELIMITER ;
 
--- CREATE TRIGGER UpdateUserStatusOnPlaylistCreation AFTER INSERT ON Playlist FOR EACH ROW
---   BEGIN
---       SET @num_playlists = (SELECT COUNT(*) FROM Playlist WHERE UserId = NEW.UserId);
+CREATE TRIGGER UpdateUserStatusOnPlaylistCreation AFTER INSERT ON Playlist
+BEGIN
+    UPDATE User
+    SET Status = 
+        CASE 
+            WHEN (SELECT COUNT(*) FROM Playlist WHERE UserId = NEW.UserId) > 0 THEN 'Active'
+            WHEN (SELECT COUNT(*) FROM Playlist WHERE UserId = NEW.UserId) < 1 THEN 'Non-Active'
+            ELSE Status -- Keep the current status if not meeting the conditions
+        END
+    WHERE UserId = NEW.UserId;
+END;
 
---       -- Check if the user has created more than 15 playlists
---       IF @num_playlists > 15 THEN
---           UPDATE User SET Status = 'Super Active' WHERE UserId = NEW.UserId;
---       ELSEIF @num_playlists > 5 THEN
---           UPDATE User SET Status = 'Active' WHERE UserId = NEW.UserId;
---       END IF;
---   END;
+CREATE TRIGGER UpdateUserStatusOnPlaylistCreationDelete AFTER DELETE ON Playlist
+BEGIN
+    UPDATE User
+    SET Status = 
+        CASE 
+            WHEN (SELECT COUNT(*) FROM Playlist WHERE UserId = OLD.UserId) > 0 THEN 'Active'
+            WHEN (SELECT COUNT(*) FROM Playlist WHERE UserId = OLD.UserId) < 1 THEN 'Non-Active'
+            ELSE Status -- Keep the current status if not meeting the conditions
+        END
+    WHERE UserId = OLD.UserId;
+END;

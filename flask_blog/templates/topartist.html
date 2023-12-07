@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Top Artists Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Top 15 Artists</h1>
+      <br>
+      {% if topartists %}
+        <p class="error"><strong>Top 15 Artists:</strong> {{ topartists }}
+      {% endif %}
+    </div>
+  </body>
+</html>

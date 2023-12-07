@@ -1,8 +1,16 @@
 import sqlite3
 from flask import Flask, render_template, redirect, url_for, request
 
+cur_user_id = 0
 user_id = 1100
+cur_playlist_id = 0
 playlistid = 600
+cur_playlist_name = ""
+create_flag = 0
+cur_artist_name = ""
+cur_song_name = ""
+delete_flag = 0
+cur_delete_playlistname = ""
 
 def get_db_connection():
     conn = sqlite3.connect('database1.db')
@@ -22,7 +30,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     conn = get_db_connection()
-
+    global cur_user_id
     error = None
     if request.method == 'POST':
         email = request.form['email']
@@ -31,6 +39,7 @@ def login():
         if len(login_info) < 1:
             error = 'Invalid Credentials. Please try again.'
         else:
+            cur_user_id = login_info[0][0]
             conn.close()
             return redirect(url_for('home_page'))
     
@@ -41,8 +50,9 @@ def login():
 def sign_up():
     render_template('signup.html')
     
-    global user_id
+    global user_id, cur_user_id
     conn = get_db_connection()
+    error = None
     if request.method == "POST":
         firstname = request.form['firstname']
         lastname = request.form['lastname']
@@ -57,13 +67,14 @@ def sign_up():
         if len(login_info) < 1:
             error = 'Please try again.'
         else:
+            cur_user_id = user_id
             user_id += 1
             conn.close()
             return redirect(url_for('home_page'))
     conn.close()
     return render_template('signup.html', error=error)
 
-@app.route('/home', methods=["GET", "POST"])
+@app.route('/home', methods=["GET", "POST", "SHOW"])
 def home_page():
     render_template('home.html')
     conn = get_db_connection()
@@ -77,70 +88,100 @@ def home_page():
             for s in song_info:
                 art = conn.execute(f'SELECT ArtistName FROM Artist WHERE ArtistID = {s[9]}').fetchall()
                 songs += "Song Name: " + s[1] + " | Release Date: " + s[2] + " | Duration: " + str(s[3]) + " | Popularity: " + str(s[4]) + " | Explicit: " + str(s[5]) + " | Mode: " + str(s[6]) + " | Energy: " + str(s[7]) + " | Liveliness: " + str(s[8]) + " | Artist: " + str(art[0][0]) + "\n"
-    
-    # if request.method == "GET":
-    #     keyword = request.form['show_my_playlists']
-    #     song_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistName LIKE "%{keyword}%"').fetchall()
-    #     if len(song_info) < 1:
-    #         songs = 'There is no matching playlists.'
-    #     else:
-    #         for s in song_info:
-    #             art = conn.execute(f'SELECT PlaylistName FROM Playlist WHERE ArtistID = {s[9]}').fetchall()
-    #             songs += "Song Name: " + s[1] + " | Release Date: " + s[2] + " | Duration: " + str(s[3]) + " | Popularity: " + str(s[4]) + " | Explicit: " + str(s[5]) + " | Mode: " + str(s[6]) + " | Energy: " + str(s[7]) + " | Liveliness: " + str(s[8]) + " | Artist: " + str(art[0][0]) + "\n"
-
     conn.close()
     return render_template('home.html', songs=songs)
 
 @app.route('/createplaylist', methods=["GET", "POST"])
 def create_playlist():
-    global user_id, playlistid
     conn = get_db_connection()
+    global cur_user_id, playlistid, cur_playlist_id, cur_playlist_name, create_flag
     error = None
-
+    render_template('playlist.html')
     if request.method == "POST":
         playlistname = request.form['createplaylistname']
 
-        playlist_info = conn.execute(f'INSERT INTO Playlist ("PlaylistId", "PlaylistName", "CreationDate", "UserId") VALUES ({playlistid}, "{playlistname}", "Dec 6, 2023", {user_id})')
-        verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistId = {playlistid} AND PlaylistName = "{playlistname}"').fetchall()
+        # playlist_info = conn.execute(f'INSERT INTO Playlist ("PlaylistId", "PlaylistName", "CreationDate", "UserId") VALUES ({playlistid}, "{playlistname}", "Dec 6, 2023", {cur_user_id})')
+        cur_playlist_name = playlistname
+        create_flag = 1
+        # verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistId = {playlistid} AND PlaylistName = "{playlistname}"').fetchall()
 
-        if len(verification_info) < 1:
-            error = 'Failed to create playlist'
-        else:
-            playlistid += 1
-            conn.close()
-            return redirect(url_for('add_songs', playlist_id=playlistid))
+        # if len(verification_info) < 1:
+        #     error = 'Failed to create playlist'
+        # else:
+        cur_playlist_id = playlistid
+        playlistid += 1
+        conn.close()
+        return redirect(url_for('add_songs'))
 
     conn.close()
     return render_template('playlist.html', error=error)
 
 @app.route('/deleteplaylist', methods=["GET", "POST"])
 def delete_playlist():
-    render_template('delete_playlist.html')
-    
     conn = get_db_connection()
     error = None
+    global cur_delete_playlistname, delete_flag
+    render_template('delete_playlist.html')
     if request.method == "POST":
         playlistname = request.form['deleteplaylistname']
+        # verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistName = "{playlistname}"').fetchall()
 
-        playlist_info = conn.execute(f'DELETE FROM Playlist WHERE PlaylistName = "{playlistname}"')
-        verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistName = "{playlistname}"').fetchall()
-
-        if len(verification_info) != 0:
-            error = 'Failed to delete playlist'
-        else:
-            conn.close()
-            return redirect(url_for('home_page'))
+        # if len(verification_info) < 1:
+        #     error = 'Failed to delete playlist: There is no matching playlist'
+        # else:
+        delete_flag = 1
+        cur_delete_playlistname = playlistname
+        # playlist_info = conn.execute(f'DELETE FROM Playlist WHERE PlaylistName = "{playlistname}"')
+        conn.close()
+        return redirect(url_for('home_page'))
     conn.close()
     return render_template('delete_playlist.html', error=error)
 
-@app.route('/playlist/<playlist_id>', methods=["GET", "POST"])
-def add_songs(playlist_id):
+@app.route('/showmyplaylist', methods=["GET", "POST"])
+def show_my_playlist():
+    conn = get_db_connection()
+    global cur_user_id, cur_playlist_id, cur_playlist_name, create_flag, cur_artist_name, cur_song_name, cur_delete_playlistname, delete_flag
+    error = None
+    if create_flag == 1:
+        playlist_info = conn.execute(f'INSERT INTO Playlist ("PlaylistId", "PlaylistName", "CreationDate", "UserId") VALUES ({cur_playlist_id}, "{cur_playlist_name}", "Dec 6, 2023", {cur_user_id})')
+        artistnamedata = conn.execute(f'SELECT ArtistId FROM Artist WHERE ArtistName = "{cur_artist_name}"').fetchall()
+        song_info = conn.execute(f'SELECT * FROM Song WHERE SongName = "{cur_song_name}" AND ArtistId = {artistnamedata[0][0]}').fetchall()
+        playlist_song_info = conn.execute(f'INSERT INTO Playlist_Song ("PlaylistId", "SongId") VALUES ({cur_playlist_id}, {song_info[0][0]})')
+        create_flag = 0
+    if delete_flag == 1:
+        verification_info = conn.execute(f'SELECT * FROM Playlist WHERE PlaylistName = "{cur_delete_playlistname}"').fetchall()
+        if len(verification_info) < 1:
+            error = 'Failed to delete playlist: There is no matching playlist'
+        else:
+            playlist_delete_info = conn.execute(f'DELETE FROM Playlist WHERE PlaylistName = "{cur_delete_playlistname}"')
+        delete_flag = 0
+    render_template('show_my_playlists.html')
+    playlists = ""
+    myplaylist_info = conn.execute(f'SELECT * FROM Playlist WHERE UserId = {cur_user_id}').fetchall()
+    if len(myplaylist_info) < 1:
+        playlists = 'There is no existing playlists. Please create one!'
+    else:
+        for p in myplaylist_info:
+            playlistsongid = conn.execute(f'SELECT * FROM Playlist_Song WHERE PlaylistId = {p[0]}').fetchall()
+            playlists += "Playlist Name: " +  p[1] + " Songs: "
+            for songid in playlistsongid:
+                playlistsongs = conn.execute(f'SELECT * FROM Song WHERE SongId = {songid[1]}').fetchall()
+                for s in playlistsongs:
+                    playlists += " | " + s[1]
+    conn.close()
+    return render_template('show_my_playlists.html', playlists=playlists)
+
+@app.route('/playlist', methods=["GET", "POST"])
+def add_songs():
     render_template('specific_playlist.html')
     conn = get_db_connection()
+    global cur_playlist_id, cur_artist_name, cur_song_name
     error = None
     if request.method == "POST":
         songname = request.form['searchaddsongs']
         artistname = request.form['search_artist']
+        cur_song_name = songname
+        cur_artist_name = artistname
 
         artistnamedata = conn.execute(f'SELECT ArtistId FROM Artist WHERE ArtistName = "{artistname}"').fetchall()
         song_info = conn.execute(f'SELECT * FROM Song WHERE SongName = "{songname}" AND ArtistId = {artistnamedata[0][0]}').fetchall()
@@ -148,11 +189,77 @@ def add_songs(playlist_id):
         if len(song_info) < 1:
             error = 'There is no matching song'
         else:
-            playlist_song_info = conn.execute(f'INSERT INTO Playlist_Song ("PlaylistId", "SongId") VALUES ({playlist_id}, {song_info[0][0]})')
+            playlist_song_info = conn.execute(f'INSERT INTO Playlist_Song ("PlaylistId", "SongId") VALUES ({cur_playlist_id}, {song_info[0][0]})')
             verification_info = conn.execute(f'SELECT * FROM Playlist_Song WHERE SongId = {song_info[0][0]}').fetchall()
             if len(verification_info) < 1:
                 error = 'Failed to add song into playlist'
-            conn.close()
-            return redirect(url_for('home_page'))
+            else: 
+                conn.close()
+                return redirect(url_for('home_page'))
     conn.close()
     return render_template('specific_playlist.html', error=error)
+
+@app.route('/showtopartists', methods=["GET", "POST"])
+def show_top_artists():
+    conn = get_db_connection()
+    topartists = "hello123"
+    # render_template('topartist.html')
+    if request.method == "GET":
+        # sp = conn.execute(f"""
+        #                   DELIMITER //
+
+        #                   CREATE PROCEDURE gettopArtists() 
+        #                   BEGIN 
+        #                     DECLARE artist_name VARCHAR(255);
+        #                     DECLARE total_popularity INT;
+        #                     DECLARE artist_rating VARCHAR(50);
+        #                     DECLARE done BOOLEAN DEFAULT FALSE;
+                            
+        #                     DECLARE song_cursor CURSOR FOR (
+        #                         SELECT ArtistName, Sum(Popularity) AS total_pop
+        #                         FROM Artist JOIN Song ON Artist.ArtistID = Song.ArtistID
+        #                         GROUP BY ArtistName
+        #                     );
+                          
+        #                     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+        #                     DROP TABLE IF EXISTS FinalTable;
+        #                     CREATE TABLE FinalTable (
+        #                         ArtistName VARCHAR(255),
+        #                         TotalPop INT,
+        #                         ArtistRating VARCHAR(50),
+        #                         PRIMARY KEY (ArtistName)
+        #                     );
+                            
+        #                     OPEN song_cursor;
+        #                     looping:LOOP
+        #                         FETCH song_cursor INTO artist_name, total_popularity;
+        #                         IF done THEN LEAVE looping;
+        #                         END IF;
+        #                         IF total_popularity >= 30 THEN
+        #                             SET artist_rating = "A";
+        #                         ELSEIF total_popularity >= 20 THEN 
+        #                             SET artist_rating = "B";
+        #                         ELSEIF total_popularity >= 10 THEN 
+        #                             SET artist_rating = "C";
+        #                         ELSE
+        #                             SET artist_rating = "D";
+        #                         END IF;
+        #                         INSERT INTO FinalTable
+        #                         VALUES (artist_name, total_popularity, artist_rating);
+        #                     END LOOP looping;
+        #                     CLOSE song_cursor;
+        #                     SELECT ArtistName, TotalPop, ArtistRating FROM FinalTable
+        #                     ORDER BY TotalPop DESC
+        #                     LIMIT 15;
+        #                   END//
+                          
+        #                   DELIMITER ;
+        #                   """)
+        topartist_info = conn.execute('gettopArtists();').fetchall()
+        print(topartists)
+        i = 1
+        for a in topartist_info:
+            print(a)
+            topartists += i + "th: " + a[0] + " Total Popularity: " + str(a[1]) + "Rank: " + a[2] + "    |     "
+    conn.close()
+    return render_template('topartist.html', topartists=topartists)

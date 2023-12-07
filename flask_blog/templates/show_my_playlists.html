@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Show My Playlists Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Playlists</h1>
+      <br>
+      <!-- <form action="" method="post"> -->
+        <!-- <input type="text" placeholder="Playlist Name" name="createplaylistname" value="{{
+            request.form.createplaylistname }}">
+        <input class="btn btn-default" type="submit" value="Create Playlist"> -->
+      <!-- </form> -->
+      {% if playlists %}
+        <p class="error"><strong>My Playlists:</strong> {{ playlists }}
+      {% endif %}
+    </div>
+  </body>
+</html>

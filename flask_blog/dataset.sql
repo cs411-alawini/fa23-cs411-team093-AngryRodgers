@@ -9,6 +9,7 @@ CREATE TABLE `User` (
   `Age` INT default NULL,
   `Email` varchar(255) default NULL,
   `PhoneNumber` varchar(100) default NULL,
+  `Status`  varchar(255) default NULL,
   PRIMARY KEY (`UserId`)
 ) ;
 
@@ -5651,3 +5652,64 @@ VALUES
   (364,539),
   (598,669),
   (406,303);
+
+-- DELIMITER //
+
+-- CREATE PROCEDURE gettopArtists() 
+--   BEGIN 
+--     DECLARE artist_name VARCHAR(255);
+--     DECLARE total_popularity INT;
+--     DECLARE artist_rating VARCHAR(50);
+--     DECLARE done BOOLEAN DEFAULT FALSE;
+    
+--     DECLARE song_cursor CURSOR FOR (
+--         SELECT ArtistName, Sum(Popularity) AS total_pop
+--         FROM Artist JOIN Song ON Artist.ArtistID = Song.ArtistID
+--         GROUP BY ArtistName
+--     );
+
+--     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+--     DROP TABLE IF EXISTS FinalTable;
+--     CREATE TABLE FinalTable (
+--         ArtistName VARCHAR(255),
+--         TotalPop INT,
+--         ArtistRating VARCHAR(50),
+--         PRIMARY KEY (ArtistName)
+--     );
+    
+--     OPEN song_cursor;
+--     looping:LOOP
+--         FETCH song_cursor INTO artist_name, total_popularity;
+--         IF done THEN LEAVE looping;
+--         END IF;
+--         IF total_popularity >= 30 THEN
+--             SET artist_rating = "A";
+--         ELSEIF total_popularity >= 20 THEN 
+--             SET artist_rating = "B";
+--         ELSEIF total_popularity >= 10 THEN 
+--             SET artist_rating = "C";
+--         ELSE
+--             SET artist_rating = "D";
+--         END IF;
+--         INSERT INTO FinalTable
+--         VALUES (artist_name, total_popularity, artist_rating);
+--     END LOOP looping;
+--     CLOSE song_cursor;
+--     SELECT ArtistName, TotalPop, ArtistRating FROM FinalTable
+--     ORDER BY TotalPop DESC
+--     LIMIT 15;
+--   END;
+
+-- DELIMITER ;
+
+-- CREATE TRIGGER UpdateUserStatusOnPlaylistCreation AFTER INSERT ON Playlist FOR EACH ROW
+--   BEGIN
+--       SET @num_playlists = (SELECT COUNT(*) FROM Playlist WHERE UserId = NEW.UserId);
+
+--       -- Check if the user has created more than 15 playlists
+--       IF @num_playlists > 15 THEN
+--           UPDATE User SET Status = 'Super Active' WHERE UserId = NEW.UserId;
+--       ELSEIF @num_playlists > 5 THEN
+--           UPDATE User SET Status = 'Active' WHERE UserId = NEW.UserId;
+--       END IF;
+--   END;

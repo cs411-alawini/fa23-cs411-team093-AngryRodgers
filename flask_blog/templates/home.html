@@ -17,11 +17,17 @@
       {% if songs %}
         <p class="songs"><strong>Songs:</strong> {{ songs }}
       {% endif %}
-      <form method="GET" enctype="multipart/form-data" action=“/createplaylist”>
+      <form method="GET" enctype="multipart/form-data" action="/createplaylist">
         <button type="submit" class="btn btn-primary">Create Playlist</button>
       </form>
-      <form method="GET" enctype="multipart/form-data" action=“/deleteplaylist”>
+      <form method="GET" enctype="multipart/form-data" action="/deleteplaylist">
         <button type="submit" class="btn btn-primary">Delete Playlist</button>
+      </form>
+      <form method="GET" enctype="multipart/form-data" action="/showmyplaylist">
+        <button type="submit" class="btn btn-primary">Show My Playlists</button>
+      </form>
+      <form method="GET" enctype="multipart/form-data" action="/showtopartists">
+        <button type="submit" class="btn btn-primary">Show TOP 15 Artists</button>
       </form>
     </div>
   </body>
